@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+# This file needs to be installed in /etc/cron.hourly
+# in order to kick the dendrite to check itself every hour 
+# 
+
+/usr/sbin/axon

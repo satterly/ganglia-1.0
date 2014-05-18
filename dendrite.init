@@ -1,0 +1,32 @@
+#!/bin/sh
+#
+# Startup script for the ganglia cluster monitoring system
+#
+# chkconfig: 2345 99 10
+# description: dendrite daemon to multicast cluster node state
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+# See how we were called.
+case "$1" in
+  start)
+	echo -n "Starting up dendrite: "
+	daemon /usr/sbin/dendrite
+	echo
+	;;
+  stop)
+	echo -n "Shutting down dendrite: "
+	killproc dendrite
+	echo
+	;;
+  restart)
+	$0 stop
+	$0 start
+	;;
+  *)
+	echo "Usage: $0 {start|stop|restart|status}"
+	exit 1
+esac
+
+exit 0
